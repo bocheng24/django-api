@@ -11,3 +11,6 @@ class Product(models.Model):
     @property
     def sale_price(self):
         return '%.2f' %(float(self.price) * 0.8)
+
+    def applyCoupon(self):
+        return "Coupon Applied"

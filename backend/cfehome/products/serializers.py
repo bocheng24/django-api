@@ -11,5 +11,16 @@ class ProductSerializer(serializers.ModelSerializer):
             'title',
             'description',
             'price',
-            'sale_price'
+            'sale_price',
+            'applyCoupon'
         ]
+
+        def get_coupon_applied(self, obj):
+            # Check if obj is a valid model instance
+            if not hasattr(obj, 'id'):
+                return None
+            
+            if not isinstance(obj, Product):
+                return None
+
+            return obj.applyCoupon()
